@@ -9,12 +9,17 @@ import {
   DeleteButton,
 } from './Contact.styled';
 import sprite from '../../../img/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/phonebookSlice';
 
 const callIcon = `${sprite}#icon-phone`;
 const deleteIcon = `${sprite}#icon-delete`;
 
-export const Contact = ({ id, name, number, onClick }) => {
+export const Contact = ({ id, name, number }) => {
   const normalizedNumberLink = `tel:${number.replace(/[^\d+]/g, '')}`;
+  const dispatch = useDispatch();
+  const handleDelete = () => dispatch(deleteContact(id));
+
   return (
     <ContactItem>
       <ContactText>
@@ -26,11 +31,7 @@ export const Contact = ({ id, name, number, onClick }) => {
           <use href={callIcon}></use>
         </ContactIcon>
       </CallButton>
-      <DeleteButton
-        type="button"
-        onClick={() => onClick(id)}
-        title="Delete Contact"
-      >
+      <DeleteButton type="button" onClick={handleDelete} title="Delete Contact">
         <ContactIcon width="24" height="24">
           <use href={deleteIcon}></use>
         </ContactIcon>
@@ -43,5 +44,4 @@ Contact.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };

@@ -12,6 +12,8 @@ import {
   ErrorText,
   AddButton,
 } from './ContactForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/phonebookSlice';
 
 const validationSchema = yup.object({
   name: yup
@@ -30,7 +32,9 @@ const validationSchema = yup.object({
     ),
 });
 
-export const ContactForm = ({ onSubmit, contacts }) => {
+export const ContactForm = () => {
+  const contacts = useSelector(state => state.phonebook.contacts);
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: { name: '', number: '' },
     onSubmit: ({ name, number }) => handleSubmit(name, number),
@@ -49,7 +53,7 @@ export const ContactForm = ({ onSubmit, contacts }) => {
       return;
     }
     Notify.success(`Contact ${name} added to contacts`);
-    onSubmit(name, number);
+    dispatch(addContact(name, number));
   };
 
   const nameInputId = uniqid();

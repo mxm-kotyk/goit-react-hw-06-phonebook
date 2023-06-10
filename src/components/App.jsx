@@ -11,15 +11,15 @@ export const App = () => {
   );
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   const handleInput = ({ currentTarget: { value } }) => setFilter(value);
 
-  const addContact = (name, number) => {
-    setContacts(prev => [...prev, { id: `${uniqid()}`, name, number }]);
-  };
+  // const addContact = (name, number) => {
+  //   setContacts(prev => [...prev, { id: `${uniqid()}`, name, number }]);
+  // };
 
   const filterContacts = () => {
     const normalizedFilter = filter.toLowerCase();
@@ -28,20 +28,20 @@ export const App = () => {
     );
   };
 
-  const deleteContact = id => {
-    setContacts(prev => [...prev.filter(contact => contact.id !== id)]);
-  };
+  // const deleteContact = id => {
+  //   setContacts(prev => [...prev.filter(contact => contact.id !== id)]);
+  // };
 
   const filteredContacts = filterContacts();
 
   return (
     <Wrapper>
       <MainTitle>Phonebook</MainTitle>
-      <ContactForm onSubmit={addContact} contacts={contacts} />
+      <ContactForm />
 
       <SecondaryTitle>Contacts</SecondaryTitle>
       <Filter filter={filter} onChange={handleInput} />
-      <ContactList contacts={filteredContacts} onClick={deleteContact} />
+      <ContactList />
     </Wrapper>
   );
 };
