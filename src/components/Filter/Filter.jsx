@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
   FilterWrapper,
   FilterLabel,
@@ -6,16 +5,25 @@ import {
   SearchIcon,
 } from './Filter.styled';
 import sprite from '../../img/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { chageFilter } from 'redux/phonebookSlice';
 
 const searchIcon = `${sprite}#icon-search`;
 
-export const Filter = ({ filter, onChange }) => {
+export const Filter = () => {
+  const filter = useSelector(state => state.phonebook.filter);
+  const dispatch = useDispatch();
+
+  const handleChange = ({ currentTarget: { value } }) => {
+    dispatch(chageFilter(value));
+  };
+
   return (
     <FilterWrapper>
       <FilterLabel htmlFor="filter">Find contacts by name</FilterLabel>
       <FilterInput
         type="text"
-        onChange={onChange}
+        onChange={handleChange}
         value={filter}
         name="filter"
         placeholder="Search"
@@ -26,8 +34,4 @@ export const Filter = ({ filter, onChange }) => {
       </SearchIcon>
     </FilterWrapper>
   );
-};
-
-Filter.propTypes = {
-  filter: PropTypes.string,
 };

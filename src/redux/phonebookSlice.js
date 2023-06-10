@@ -38,8 +38,12 @@ export const phonebookSlice = createSlice({
         ),
       };
     },
+    chageFilter(state, action) {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { addContact, deleteContact } = phonebookSlice.actions;
+export const { addContact, deleteContact, chageFilter } =
+  phonebookSlice.actions;
 export const phonebookReducer = phonebookSlice.reducer;

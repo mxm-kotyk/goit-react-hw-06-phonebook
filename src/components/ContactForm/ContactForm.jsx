@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
@@ -99,14 +98,4 @@ export const ContactForm = () => {
       </StyledForm>
     </div>
   );
-};
-
-ContactForm.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ),
 };
