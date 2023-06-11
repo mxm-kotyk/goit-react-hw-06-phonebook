@@ -3,7 +3,7 @@ import uniqid from 'uniqid';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
-const initialState = [];
+const initialState = { contacts: [] };
 
 export const contactsSlice = createSlice({
   name: 'contacts',
