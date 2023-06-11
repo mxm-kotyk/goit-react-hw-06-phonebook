@@ -1,5 +1,3 @@
-// import { useState, useEffect } from 'react';
-// import uniqid from 'uniqid';
 import { ContactForm } from './ContactForm';
 import { Filter } from './Filter';
 import { ContactList } from './ContactList';
