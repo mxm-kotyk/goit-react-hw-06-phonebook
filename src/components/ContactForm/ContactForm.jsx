@@ -12,7 +12,7 @@ import {
   AddButton,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/phonebookSlice';
+import { addContact } from 'redux/contactsSlice';
 
 const validationSchema = yup.object({
   name: yup
@@ -32,7 +32,7 @@ const validationSchema = yup.object({
 });
 
 export const ContactForm = () => {
-  const contacts = useSelector(state => state.phonebook.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: { name: '', number: '' },

@@ -10,7 +10,7 @@ import {
 } from './Contact.styled';
 import sprite from '../../../img/sprite.svg';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/phonebookSlice';
+import { deleteContact } from 'redux/contactsSlice';
 
 const callIcon = `${sprite}#icon-phone`;
 const deleteIcon = `${sprite}#icon-delete`;

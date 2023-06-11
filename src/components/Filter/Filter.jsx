@@ -6,16 +6,17 @@ import {
 } from './Filter.styled';
 import sprite from '../../img/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { chageFilter } from 'redux/phonebookSlice';
+import { changeFilter } from 'redux/filterSlice';
+import { getFilter } from 'redux/selectors';
 
 const searchIcon = `${sprite}#icon-search`;
 
 export const Filter = () => {
-  const filter = useSelector(state => state.phonebook.filter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   const handleChange = ({ currentTarget: { value } }) => {
-    dispatch(chageFilter(value));
+    dispatch(changeFilter(value));
   };
 
   return (
